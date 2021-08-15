@@ -6,7 +6,7 @@ const PRODUCTS = [
     'u1',
     'Squishable Venus Fly Trap',
     'https://www.squishable.com/mm5/graphics/00000001/4/squish_venus_fly_trap_15.jpg',
-    "They 're the most superlative carnivorous plant a couple of spooky plague professionals could hope to co-parent.",
+    "They're the most superlative carnivorous plant a couple of spooky plague professionals could hope to co-parent.",
     49.99
   ),
   new Product(
