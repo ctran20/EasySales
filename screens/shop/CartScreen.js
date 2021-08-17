@@ -56,6 +56,10 @@ const CartScreen = () => {
   );
 };
 
+CartScreen.navigationOptions = {
+  headerTitle: 'Your Orders',
+};
+
 const styles = StyleSheet.create({
   screen: {
     margin: 20,
