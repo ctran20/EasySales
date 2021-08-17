@@ -1,8 +1,18 @@
 import React from 'react';
-import { } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 
-const temp = () => {
+const OrdersScreen = (props) => {
+  const orders = useSelector((state) => state.orders.orders);
 
+  return (
+    <FlatList
+      data={orders}
+      renderItem={(itemData) => <Text>{itemData.item.totalAmount}</Text>}
+    />
+  );
 };
 
-export default temp;
+const styles = StyleSheet.create({});
+
+export default OrdersScreen;
