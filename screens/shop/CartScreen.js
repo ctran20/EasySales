@@ -34,7 +34,7 @@ const CartScreen = () => {
           title="Order Now"
           disabled={!cartItems.length}
           onPress={() => {
-            dispatch(ordersActions.addOrder(cartItems, cartTotalAmount));
+            dispatch(orderActions.addOrder(cartItems, cartTotalAmount));
           }}
         />
       </View>
