@@ -9,6 +9,7 @@ import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
 import CartScreen from '../screens/shop/CartScreen';
 import OrdersScreen from '../screens/shop/OrdersScreen';
 import UserProductsScreen from '../screens/user/UserProductsScreen';
+import EditProductScreen from '../screens/user/EditProductScreen';
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -66,6 +67,7 @@ const OrderNavigator = createStackNavigator(
 const AdminNavigator = createStackNavigator(
   {
     UserProducts: UserProductsScreen,
+    EditProduct: EditProductScreen,
   },
   {
     navigationOptions: {
@@ -77,7 +79,18 @@ const AdminNavigator = createStackNavigator(
         />
       ),
     },
-    defaultNavigationOptions: defaultNavOptions,
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: Platform.OS === 'android' ? Colors.extra : '',
+      },
+      headerTitleStyle: {
+        fontFamily: 'open-sans-bold',
+      },
+      headerBackTitleStyle: {
+        fontFamily: 'open-sans',
+      },
+      headerTintColor: Platform.OS === 'android' ? 'white' : Colors.extra,
+    },
   }
 );
 

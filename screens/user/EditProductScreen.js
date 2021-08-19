@@ -1,6 +1,14 @@
 import React from 'react';
-import {} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const EditProductScreen = () => {};
+const EditProductScreen = () => {
+  return (
+    <View>
+      <Text>Hello EditProductScreen!</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({});
 
 export default EditProductScreen;

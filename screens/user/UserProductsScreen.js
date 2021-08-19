@@ -7,9 +7,14 @@ import HeaderButton from '../../components/UI/HeaderButton';
 import Colors from '../../constants/Colors';
 import * as productsActions from '../../store/actions/product';
 
-const UserProductsScreen = () => {
+const UserProductsScreen = (props) => {
   const userProducts = useSelector((state) => state.products.userProducts);
   const dispatch = useDispatch();
+
+  const editProductHandler = (id) => {
+    props.navigation.navigate('EditProduct', { productId: id });
+  };
+
   return (
     <FlatList
       data={userProducts}
@@ -18,10 +23,18 @@ const UserProductsScreen = () => {
           image={itemData.item.imageUrl}
           title={itemData.item.title}
           price={itemData.item.price}
-          onSelect={() => {}}
+          onSelect={() => {
+            editProductHandler(itemData.item.id);
+          }}
         >
           <View style={styles.buttonContainer}>
-            <Button color={Colors.extra} title="Edt" onPress={() => {}} />
+            <Button
+              color={Colors.extra}
+              title="Edt"
+              onPress={() => {
+                editProductHandler(itemData.item.id);
+              }}
+            />
           </View>
           <View style={styles.buttonContainer}>
             <Button
@@ -52,10 +65,17 @@ UserProductsScreen.navigationOptions = (navdata) => {
         />
       </HeaderButtons>
     ),
-    headerStyle: {
-      backgroundColor: Platform.OS === 'android' ? Colors.extra : '',
-    },
-    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.extra,
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Add"
+          iconName={Platform.OS === 'android' ? 'md-create' : 'ios-create'}
+          onPress={() => {
+            navdata.navigation.navigate('EditProduct');
+          }}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 
