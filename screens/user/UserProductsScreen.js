@@ -19,7 +19,7 @@ const UserProductsScreen = () => {
           onSelect={() => {}}
         >
           <View style={styles.buttonContainer}>
-            <Button color={Colors.extra} title="Edit" onPress={() => {}} />
+            <Button color={Colors.extra} title="Edt" onPress={() => {}} />
           </View>
           <View style={styles.buttonContainer}>
             <Button color={'red'} title="Delete" onPress={() => {}} />
