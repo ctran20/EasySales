@@ -1,8 +1,6 @@
 import React from 'react';
-import { } from 'react-native';
+import {} from 'react-native';
 
-const temp = () => {
+const EditProductScreen = () => {};
 
-}
-
-export default temp;
+export default EditProductScreen;

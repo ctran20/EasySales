@@ -1,9 +1,14 @@
 import React from 'react';
-import { Text, FlatList, StyleSheet, Platform } from 'react-native';
+import { FlatList, Platform } from 'react-native';
 import { useSelector } from 'react-redux';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import HeaderButton from '../../components/UI/HeaderButton';
+import {
+  HeaderButton,
+  HeaderButtons,
+  Item,
+} from 'react-navigation-header-buttons';
 import OrderItem from '../../components/shop/OrderItem';
+import Colors from '../../constants/Colors';
+import { Ionicons } from '@expo/vector-icons';
 
 const OrdersScreen = (props) => {
   const orders = useSelector((state) => state.orders.orders);
@@ -15,8 +20,20 @@ const OrdersScreen = (props) => {
         <OrderItem
           amount={itemData.item.totalAmount}
           date={itemData.item.readableDate}
+          items={itemData.item.items}
         />
       )}
+    />
+  );
+};
+
+const CustomHeaderButton = (props) => {
+  return (
+    <HeaderButton
+      {...props}
+      IconComponent={Ionicons}
+      iconSize={23}
+      color={Platform.OS === 'android' ? 'white' : Colors.accent}
     />
   );
 };
@@ -25,7 +42,7 @@ OrdersScreen.navigationOptions = (navdata) => {
   return {
     headerTitle: 'Your Orders',
     headerLeft: () => (
-      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title="Menu"
           iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
@@ -35,9 +52,11 @@ OrdersScreen.navigationOptions = (navdata) => {
         />
       </HeaderButtons>
     ),
+    headerStyle: {
+      backgroundColor: Platform.OS === 'android' ? Colors.accent : '',
+    },
+    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.accent,
   };
 };
-
-const styles = StyleSheet.create({});
 
 export default OrdersScreen;

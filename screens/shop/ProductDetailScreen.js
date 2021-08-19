@@ -46,9 +46,10 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 300,
+    marginBottom: 15,
   },
   actions: {
-    marginVertical: 10,
+    marginVertical: 5,
     alignItems: 'center',
   },
   price: {
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#888',
     textAlign: 'center',
-    marginVertical: 20,
+    marginVertical: 15,
   },
   description: {
     fontFamily: 'open-sans',

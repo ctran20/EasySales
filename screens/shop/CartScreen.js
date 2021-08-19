@@ -46,6 +46,7 @@ const CartScreen = () => {
             quantity={itemData.item.quantity}
             title={itemData.item.productTitle}
             amount={itemData.item.sum}
+            deletable
             onRemove={() => {
               dispatch(cartActions.removeFromCart(itemData.item.productId));
             }}
@@ -69,7 +70,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 20,
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
     shadowColor: 'black',
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
