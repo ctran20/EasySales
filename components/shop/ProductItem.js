@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import {
 
 const ProductItem = (props) => {
   let TouchableCmp = TouchableOpacity;
-
+  const [imgUrl, setImgUrl] = useState(props.image);
   if (Platform.OS === 'android') {
     TouchableCmp = TouchableNativeFeedback;
   }
@@ -22,7 +22,15 @@ const ProductItem = (props) => {
         <TouchableCmp onPress={props.onSelect} useForeground>
           <View>
             <View style={styles.imageContainer}>
-              <Image style={styles.image} source={{ uri: props.image }} />
+              <Image
+                style={styles.image}
+                source={{ uri: imgUrl }}
+                onError={(e) => {
+                  setImgUrl(
+                    'https://play-lh.googleusercontent.com/fHr2pe1B7n_dvrFX3e-P-BFrsiMJ-nPh4_wn4Yj2vwlINS_Lb4CwK8qKGK8upu5to-RK'
+                  );
+                }}
+              />
             </View>
 
             <View style={styles.details}>
