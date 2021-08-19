@@ -30,7 +30,7 @@ const UserProductsScreen = (props) => {
           <View style={styles.buttonContainer}>
             <Button
               color={Colors.extra}
-              title="Edt"
+              title="Edit"
               onPress={() => {
                 editProductHandler(itemData.item.id);
               }}
