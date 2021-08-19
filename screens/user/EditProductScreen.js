@@ -9,7 +9,7 @@ import {
   Alert,
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import HeaderButton from '../../components/UI/HeaderButton';
+import HeaderButton from '../../components/UI/ExtraHeaderButton';
 import { useSelector, useDispatch } from 'react-redux';
 import * as productActions from '../../store/actions/product';
 
