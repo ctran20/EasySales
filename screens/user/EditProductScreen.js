@@ -6,6 +6,7 @@ import {
   TextInput,
   StyleSheet,
   Platform,
+  Alert,
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import HeaderButton from '../../components/UI/HeaderButton';
@@ -29,6 +30,15 @@ const EditProductScreen = (props) => {
   );
 
   const submitHandler = useCallback(() => {
+    if (!title || !description || !imageUrl) {
+      Alert.alert('Error', 'Please fill out all fields!', [
+        {
+          text: 'Ok',
+          styles: 'default',
+        },
+      ]);
+      return;
+    }
     if (editedProduct) {
       dispatch(
         productActions.updateProduct(prodId, title, description, imageUrl)
@@ -38,6 +48,7 @@ const EditProductScreen = (props) => {
         productActions.createProduct(title, description, imageUrl, +price)
       );
     }
+    props.navigation.goBack();
   }, [dispatch, prodId, title, description, imageUrl, price, editedProduct]);
 
   useEffect(() => {
@@ -70,6 +81,7 @@ const EditProductScreen = (props) => {
               style={styles.input}
               value={price}
               onChangeText={(text) => setPrice(text)}
+              keyboardType="numeric"
             />
           </View>
         )}

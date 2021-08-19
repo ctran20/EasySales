@@ -8,16 +8,17 @@ import {
   TouchableNativeFeedback,
   Platform,
 } from 'react-native';
+import Card from '../UI/Card';
 
 const ProductItem = (props) => {
-  let TouchableCmp = TouchableOpacity;
   const [imgUrl, setImgUrl] = useState(props.image);
+  let TouchableCmp = TouchableOpacity;
   if (Platform.OS === 'android') {
     TouchableCmp = TouchableNativeFeedback;
   }
 
   return (
-    <View style={styles.product}>
+    <Card style={styles.product}>
       <View style={styles.touchable}>
         <TouchableCmp onPress={props.onSelect} useForeground>
           <View>
@@ -25,7 +26,7 @@ const ProductItem = (props) => {
               <Image
                 style={styles.image}
                 source={{ uri: imgUrl }}
-                onError={(e) => {
+                onError={() => {
                   setImgUrl(
                     'https://play-lh.googleusercontent.com/fHr2pe1B7n_dvrFX3e-P-BFrsiMJ-nPh4_wn4Yj2vwlINS_Lb4CwK8qKGK8upu5to-RK'
                   );
@@ -41,19 +42,12 @@ const ProductItem = (props) => {
           </View>
         </TouchableCmp>
       </View>
-    </View>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   product: {
-    shadowColor: 'black',
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 5,
-    borderRadius: 10,
-    backgroundColor: 'white',
     height: 300,
     margin: 20,
   },
