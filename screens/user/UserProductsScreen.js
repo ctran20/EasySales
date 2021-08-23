@@ -6,6 +6,7 @@ import {
   Platform,
   StyleSheet,
   Alert,
+  Text,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import ProductItem from '../../components/shop/ProductItem';
@@ -100,6 +101,11 @@ UserProductsScreen.navigationOptions = (navdata) => {
 const styles = StyleSheet.create({
   buttonContainer: {
     width: 100,
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
