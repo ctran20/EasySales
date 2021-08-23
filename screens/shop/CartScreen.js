@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import * as cartActions from '../../store/actions/cart';
 import * as orderActions from '../../store/actions/orders';
 
 const CartScreen = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
   const cartItems = useSelector((state) => {
     const transformedCartItems = [];
@@ -31,6 +32,16 @@ const CartScreen = () => {
     return transformedCartItems.sort((a, b) => a.productId > b.productId);
   });
   const dispatch = useDispatch();
+
+  const sendOrderHandler = async () => {
+    setIsLoading(true);
+    await dispatch(orderActions.addOrder(cartItems, cartTotalAmount));
+    setIsLoading(false);
+    Alert.alert('Order Received', 'Thank you for shopping with us!', [
+      { text: 'Back', styles: 'default' },
+    ]);
+  };
+
   return (
     <View style={styles.screen}>
       <Card style={styles.summary}>
@@ -38,17 +49,18 @@ const CartScreen = () => {
           Total:{' '}
           <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
         </Text>
-        <Button
-          color={Colors.accent}
-          title="Order Now"
-          disabled={!cartItems.length}
-          onPress={() => {
-            dispatch(orderActions.addOrder(cartItems, cartTotalAmount));
-            Alert.alert('Order Received', 'Thank you for shopping with us!', [
-              { text: 'Back', styles: 'default' },
-            ]);
-          }}
-        />
+        {isLoading ? (
+          <View style={styles.centered}>
+            <ActivityIndicator size="large" color={Colors.primary} />
+          </View>
+        ) : (
+          <Button
+            color={Colors.accent}
+            title="Order Now"
+            disabled={!cartItems.length}
+            onPress={sendOrderHandler}
+          />
+        )}
       </Card>
       <FlatList
         data={cartItems}
