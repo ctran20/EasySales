@@ -8,7 +8,7 @@ export const SET_PRODUCT = 'SET_PRODUCT';
 export const fetchProducts = () => {
   try {
     return async (dispatch, getState) => {
-      const token = getState().auth.token;
+      const userId = getState().auth.userId;
       const response = await fetch(
         'https://easy-sales-ef9ce-default-rtdb.firebaseio.com/products.json'
       );
@@ -24,7 +24,7 @@ export const fetchProducts = () => {
         loadedProducts.push(
           new Product(
             key,
-            'u1',
+            resData[key].owenerId,
             resData[key].title,
             resData[key].imageUrl,
             resData[key].description,
@@ -35,7 +35,8 @@ export const fetchProducts = () => {
 
       dispatch({
         type: SET_PRODUCT,
-        products: loadedProducts.filter((prod) => prod.ownerId === userId),
+        products: loadedProducts,
+        userProducts: loadedProducts.filter((prod) => prod.ownerId === userId),
       });
     };
   } catch (err) {
@@ -65,6 +66,7 @@ export const deleteProduct = (productId) => {
 export const createProduct = (title, description, imageUrl, price) => {
   return async (dispatch, getState) => {
     const token = getState().auth.token;
+    const userId = getState().auth.userId;
     //any async code you want
     const response = await fetch(
       `https://easy-sales-ef9ce-default-rtdb.firebaseio.com/products.json?auth=${token}`,
