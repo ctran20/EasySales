@@ -28,9 +28,9 @@ export const signup = (email, password) => {
       throw new Error(message);
     }
 
-    //const resData = await response.json();
+    const resData = await response.json();
     console.log('Signed Up!');
-    dispatch({ type: SIGNUP });
+    dispatch({ type: SIGNUP, token: resData.idToken, userId: resData.localId });
   };
 };
 
@@ -60,8 +60,8 @@ export const login = (email, password) => {
       }
       throw new Error(message);
     }
-
+    const resData = await response.json();
     console.log('Logged in!');
-    dispatch({ type: LOGIN });
+    dispatch({ type: LOGIN, token: resData.idToken, userId: resData.localId });
   };
 };
