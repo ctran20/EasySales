@@ -9,6 +9,7 @@ import {
   Text,
   ActivityIndicator,
   Alert,
+  Image,
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -166,8 +167,17 @@ const AuthScreen = (props) => {
   );
 };
 
+function LogoTitle() {
+  return (
+    <Image
+      style={{ width: 140, height: 60 }}
+      source={require('../../git-imgs/ios-logo.png')}
+    />
+  );
+}
+
 AuthScreen.navigationOptions = {
-  headerTitle: 'Easy Sales',
+  headerTitle: () => <LogoTitle />,
 };
 
 const styles = StyleSheet.create({
@@ -176,7 +186,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'open-sans-bold',
-    fontSize: 25,
+    fontSize: 20,
     color: Colors.primary,
   },
   gradient: {

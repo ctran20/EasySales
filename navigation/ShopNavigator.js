@@ -5,7 +5,7 @@ import {
   createDrawerNavigator,
   DrawerNavigatorItems,
 } from 'react-navigation-drawer';
-import { Platform, SafeAreaView, Button, View } from 'react-native';
+import { Platform, SafeAreaView, Button, View, Image } from 'react-native';
 
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen';
@@ -101,8 +101,25 @@ const AdminNavigator = createStackNavigator(
   }
 );
 
+function LogoTitle() {
+  return (
+    <Image
+      style={{ width: 120, height: 50 }}
+      source={require('../git-imgs/ios-logo.png')}
+    />
+  );
+}
+
 const ShopNavigator = createDrawerNavigator(
   {
+    Title: {
+      screen: ProductsNavigator,
+      navigationOptions: {
+        drawerLabel: () => <LogoTitle />,
+        backgroundColor: '#c6cbef',
+        drawerIcon: () => null,
+      },
+    },
     Products: ProductsNavigator,
     Orders: OrderNavigator,
     Admin: AdminNavigator,
