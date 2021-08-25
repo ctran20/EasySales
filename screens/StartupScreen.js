@@ -1,4 +1,4 @@
-import React, { userState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Colors from '../constants/Colors';
@@ -23,8 +23,10 @@ const StartupScreen = (props) => {
         return;
       }
 
+      const expirationTime = expirationDate.getTime() - new Date().getTime();
+
       props.navigation.navigate('Shop');
-      dispatch(authActions.authenticate(userId, token));
+      dispatch(authActions.authenticate(userId, token, expirationTime));
     };
 
     tryLogin();
