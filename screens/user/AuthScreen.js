@@ -170,8 +170,12 @@ const AuthScreen = (props) => {
 function LogoTitle() {
   return (
     <Image
-      style={{ width: 140, height: 60 }}
-      source={require('../../git-imgs/ios-logo.png')}
+      style={{ width: 155, height: 40 }}
+      source={
+        Platform.OS === 'android'
+          ? require('../../git-imgs/android-logo.png')
+          : require('../../git-imgs/ios-logo.png')
+      }
     />
   );
 }

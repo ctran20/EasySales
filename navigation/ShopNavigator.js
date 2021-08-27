@@ -103,10 +103,18 @@ const AdminNavigator = createStackNavigator(
 
 function LogoTitle() {
   return (
-    <Image
-      style={{ width: 120, height: 50 }}
-      source={require('../git-imgs/ios-logo.png')}
-    />
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Image
+        style={{ width: 145, height: 35, margin: 5 }}
+        source={require('../git-imgs/ios-logo.png')}
+      />
+    </View>
   );
 }
 
@@ -134,7 +142,7 @@ const ShopNavigator = createDrawerNavigator(
         <View style={{ flex: 1, paddingTop: 20 }}>
           <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
             <DrawerNavigatorItems {...props} />
-            <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
+            <View style={{ paddingHorizontal: 20, paddingVertical: 20 }}>
               <Button
                 title="Logout"
                 color={Colors.primary}
