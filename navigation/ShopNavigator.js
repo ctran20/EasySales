@@ -139,7 +139,7 @@ const ShopNavigator = createDrawerNavigator(
     contentComponent: (props) => {
       const dispatch = useDispatch();
       return (
-        <View style={{ flex: 1, paddingTop: 20 }}>
+        <View style={{ flex: 1, paddingTop: 15 }}>
           <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
             <DrawerNavigatorItems {...props} />
             <View style={{ paddingHorizontal: 20, paddingVertical: 20 }}>
