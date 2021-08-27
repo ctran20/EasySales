@@ -6,7 +6,8 @@
 - User can create your own listing and sell your items.
 - User can order items from other users on the app.
 
-<hr>
+#
+
 To run the project:
 
 1. Install expo
