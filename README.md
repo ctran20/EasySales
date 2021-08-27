@@ -6,6 +6,14 @@
 - User can create your own listing and sell your items.
 - User can order items from other users on the app.
 
+<hr>
+To run the project:
+
+1. Install expo
+2. Clone this repo
+3. Run `npm install`
+4. Run `npm start`
+
 <hr/>
 <h3>Home Screen:</h3>
 All products from all users are displayed at the home screen.
