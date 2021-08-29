@@ -3,8 +3,8 @@
 
 
 - User can create an account and login to the app.
-- User can create your own listing and sell your items.
-- User can order items from other users on the app.
+- User can create their own listing and sell your items.
+- User can purchase items from other users on the app.
 
 #
 
